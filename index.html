@@ -105,6 +105,7 @@ footer span{color:#00ff41;}
     <a href="#mission">MISSION</a>
     <a href="#how">RANKS</a>
     <a href="#join">ENLIST</a>
+    <a href="#case">OPEN CASE</a>
   </div>
 </nav>
 
@@ -206,6 +207,43 @@ footer span{color:#00ff41;}
         <option value="I've seen others bullied">I've seen others bullied</option>
       </select>
       <button type="submit" class="submit-btn">SUBMIT ENLISTMENT</button>
+    </form>
+  </div>
+</section>
+
+<!-- OPEN A CASE -->
+<section id="case" style="padding:80px 20px;border-bottom:1px solid #1a1a1a;">
+  <div class="inner" style="max-width:600px;margin:0 auto;">
+    <div class="section-tag">// OPEN A CASE</div>
+    <h2 style="font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;">BEING BULLIED?</h2>
+    <div style="color:#555;font-size:14px;letter-spacing:2px;margin-bottom:16px;">WE WILL SEND AN AGENT. — $5 TO OPEN A CASE</div>
+    <div style="border:1px solid #333;padding:16px;margin-bottom:30px;background:#050505;">
+      <p style="color:#00ff41;font-size:13px;line-height:1.8;">> Fill out the form below.<br>> Director Oliver Vo reviews your case.<br>> A B.O.L.D agent near you is assigned.<br>> They go undercover and stop the bullying.<br>> Pay $5 cash when your agent contacts you.</p>
+    </div>
+    <form action="https://formsubmit.co/truongnvo@gmail.com" method="POST" style="text-align:left;">
+      <input type="hidden" name="_subject" value="NEW B.O.L.D CASE OPENED!">
+      <input type="hidden" name="_next" value="https://oliveryvo-cmd.github.io/bold/case-thanks.html">
+      <input type="hidden" name="_captcha" value="false">
+      <label class="form-label">// YOUR FIRST NAME</label>
+      <input type="text" name="Name" placeholder="First name only" required>
+      <label class="form-label">// YOUR AGE</label>
+      <input type="number" name="Age" placeholder="Your age" required>
+      <label class="form-label">// YOUR CITY & STATE</label>
+      <input type="text" name="Location" placeholder="e.g. Ladera Ranch, CA" required>
+      <label class="form-label">// YOUR SCHOOL</label>
+      <input type="text" name="School" placeholder="Your school name" required>
+      <label class="form-label">// DESCRIBE THE BULLYING</label>
+      <textarea name="Description" placeholder="What is happening? Who is doing it? Where does it happen?" style="height:100px;resize:none;width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;" required></textarea>
+      <label class="form-label">// HOW LONG HAS IT BEEN HAPPENING?</label>
+      <select name="Duration" style="width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;">
+        <option>Just started</option>
+        <option>A few weeks</option>
+        <option>A few months</option>
+        <option>A long time</option>
+      </select>
+      <label class="form-label">// YOUR EMAIL (so we can contact you)</label>
+      <input type="email" name="Email" placeholder="your@email.com" required>
+      <button type="submit" class="submit-btn">OPEN CASE — $5</button>
     </form>
   </div>
 </section>
