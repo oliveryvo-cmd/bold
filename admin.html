@@ -2,139 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>B.O.L.D — Director Admin</title>
+<title>B.O.L.D — Admin</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#000;color:#00ff41;font-family:'Share Tech Mono',monospace;min-height:100vh;padding:20px;}
+body{background:#000;color:#00ff41;font-family:'Share Tech Mono',monospace;min-height:100vh;padding:40px 20px;}
 
-/* LOCK */
-#lock{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;}
+#lock{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:16px;}
 #lock h1{font-family:'Orbitron',monospace;font-size:36px;color:#00ff41;letter-spacing:6px;}
-#lock p{color:#333;font-size:13px;letter-spacing:2px;}
+#lock p{color:#555;font-size:13px;letter-spacing:2px;}
 #lock input{background:#000;border:1px solid #00ff41;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:20px;padding:12px 20px;text-align:center;width:220px;outline:none;letter-spacing:6px;}
-#lock button{background:#000;border:1px solid #00ff41;color:#00ff41;font-family:'Orbitron',monospace;font-size:13px;letter-spacing:4px;padding:12px 40px;cursor:pointer;transition:all 0.2s;}
+#lock button{background:#000;border:1px solid #00ff41;color:#00ff41;font-family:'Orbitron',monospace;font-size:13px;letter-spacing:4px;padding:12px 36px;cursor:pointer;transition:all 0.2s;}
 #lock button:hover{background:#00ff41;color:#000;}
-#lock .error{color:#ff3333;font-size:13px;display:none;}
+#lock .error{color:#ff0000;font-size:13px;display:none;}
 
-/* DASHBOARD */
-#dash{display:none;}
-.topbar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #111;padding-bottom:16px;margin-bottom:32px;flex-wrap:wrap;gap:12px;}
-.topbar h1{font-family:'Orbitron',monospace;font-size:28px;color:#00ff41;letter-spacing:4px;}
-.topbar .sub{font-size:11px;color:#333;letter-spacing:2px;}
+#dashboard{display:none;}
+.header{border:1px solid #00ff41;padding:20px 30px;margin-bottom:30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.header h1{font-family:'Orbitron',monospace;font-size:24px;color:#00ff41;letter-spacing:4px;}
+.stats{display:flex;gap:30px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Orbitron',monospace;font-size:32px;color:#00ff41;}
+.stat-label{font-size:10px;color:#555;letter-spacing:3px;}
 
-.stats{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;}
-.stat{border:1px solid #111;padding:16px 24px;text-align:center;min-width:120px;}
-.stat-num{font-family:'Orbitron',monospace;font-size:40px;color:#00ff41;}
-.stat-label{font-size:10px;color:#333;letter-spacing:3px;margin-top:4px;}
-
-.tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid #111;}
-.tab{padding:10px 28px;font-size:12px;letter-spacing:3px;cursor:pointer;border-bottom:2px solid transparent;color:#333;transition:all 0.2s;}
+.tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid #222;}
+.tab{padding:10px 24px;font-size:12px;letter-spacing:3px;cursor:pointer;color:#555;border-bottom:2px solid transparent;transition:all 0.2s;}
 .tab.active{color:#00ff41;border-bottom-color:#00ff41;}
 
-.add-btn{background:#000;border:1px solid #00ff41;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:3px;padding:10px 24px;cursor:pointer;margin-bottom:20px;transition:all 0.2s;}
-.add-btn:hover{background:#00ff41;color:#000;}
-
-#addForm{border:1px solid #111;padding:20px;margin-bottom:24px;display:none;}
-#addForm h3{font-family:'Orbitron',monospace;font-size:14px;color:#00ff41;letter-spacing:3px;margin-bottom:16px;}
-#addForm input,#addForm select,#addForm textarea{width:100%;background:#000;border:none;border-bottom:1px solid #333;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px 4px;margin-bottom:12px;outline:none;}
-#addForm textarea{min-height:60px;border:1px solid #222;border-bottom:1px solid #333;padding:8px;}
-#addForm .save{background:#00ff41;border:none;color:#000;font-family:'Orbitron',monospace;font-size:12px;letter-spacing:3px;padding:10px 28px;cursor:pointer;}
-
-.card{border:1px solid #111;padding:16px 20px;margin-bottom:12px;transition:border-color 0.2s;}
-.card:hover{border-color:#222;}
-.card-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
-.card-name{font-family:'Orbitron',monospace;font-size:15px;color:#00ff41;}
-.card-rank{font-size:11px;letter-spacing:3px;padding:3px 10px;border:1px solid;}
-.card-detail{font-size:12px;color:#333;margin-bottom:3px;line-height:1.6;}
+.card{border:1px solid #1a1a1a;padding:20px;margin-bottom:16px;}
+.card-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.card-name{font-family:'Orbitron',monospace;font-size:16px;color:#00ff41;}
+.card-rank{font-size:11px;letter-spacing:3px;color:#555;border:1px solid #222;padding:3px 10px;}
+.card-detail{font-size:13px;color:#333;margin-bottom:4px;}
 .card-detail span{color:#555;}
-.card-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
-.act-btn{background:#000;border:1px solid #222;color:#555;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;padding:5px 14px;cursor:pointer;transition:all 0.2s;}
-.act-btn:hover{border-color:#00ff41;color:#00ff41;}
-.act-btn.del:hover{border-color:#ff3333;color:#ff3333;}
-.act-btn.active{border-color:#00ff41;color:#00ff41;}
+.card-why{font-size:13px;color:#444;margin-top:8px;line-height:1.6;border-left:2px solid #1a1a1a;padding-left:12px;}
+
+.rank-btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.rank-btn{background:#000;border:1px solid #222;color:#555;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;padding:5px 12px;cursor:pointer;transition:all 0.2s;}
+.rank-btn:hover{border-color:#00ff41;color:#00ff41;}
+.rank-btn.active{border-color:#00ff41;color:#00ff41;}
+.del-btn{background:#000;border:1px solid #1a1a1a;color:#330000;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;padding:5px 12px;cursor:pointer;transition:all 0.2s;margin-left:auto;}
+.del-btn:hover{border-color:#ff0000;color:#ff0000;}
 
 .empty{text-align:center;color:#222;font-size:14px;letter-spacing:3px;padding:60px 20px;}
+
+.add-btn{background:#000;border:1px solid #00ff41;color:#00ff41;font-family:'Orbitron',monospace;font-size:12px;letter-spacing:3px;padding:10px 24px;cursor:pointer;margin-bottom:20px;transition:all 0.2s;}
+.add-btn:hover{background:#00ff41;color:#000;}
+#addForm{border:1px solid #222;padding:24px;margin-bottom:24px;display:none;}
+#addForm input,#addForm select{width:100%;background:#000;border:none;border-bottom:1px solid #333;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px 4px;margin-bottom:14px;outline:none;}
+#addForm label{font-size:11px;color:#555;letter-spacing:3px;display:block;margin-bottom:4px;}
 </style>
 </head>
 <body>
 
 <div id="lock">
-  <div style="font-family:'Orbitron',monospace;font-size:48px;color:#00ff41;">B.O.L.D</div>
-  <h1>DIRECTOR ACCESS</h1>
-  <p>CLASSIFIED — OLIVER VO ONLY</p>
+  <div style="font-family:'Orbitron',monospace;font-size:48px;color:#00ff41;letter-spacing:8px;margin-bottom:8px;">B.O.L.D</div>
+  <h1>ADMIN ACCESS</h1>
+  <p>DIRECTOR ONLY. ENTER PASSWORD.</p>
   <input type="password" id="pw" placeholder="••••••" onkeydown="if(event.key==='Enter')unlock()">
   <button onclick="unlock()">ENTER →</button>
-  <div class="error" id="err">ACCESS DENIED. TRY AGAIN.</div>
+  <div class="error" id="err">ACCESS DENIED.</div>
 </div>
 
-<div id="dash">
-  <div class="topbar">
-    <div>
-      <h1>DIRECTOR PANEL</h1>
-      <div class="sub">B.O.L.D · OLIVER VO · LADERA RANCH, CA</div>
+<div id="dashboard">
+  <div class="header">
+    <h1>B.O.L.D ADMIN</h1>
+    <div class="stats">
+      <div class="stat"><div class="stat-num" id="totalAgents">0</div><div class="stat-label">AGENTS</div></div>
+      <div class="stat"><div class="stat-num" id="totalCases">0</div><div class="stat-label">CASES</div></div>
     </div>
-    <a href="index.html" style="color:#333;font-size:11px;letter-spacing:3px;text-decoration:none;">← BACK TO BASE</a>
-  </div>
-
-  <div class="stats">
-    <div class="stat"><div class="stat-num" id="totalAgents">0</div><div class="stat-label">AGENTS</div></div>
-    <div class="stat"><div class="stat-num" id="totalCases">0</div><div class="stat-label">CASES</div></div>
-    <div class="stat"><div class="stat-num" id="activeCases">0</div><div class="stat-label">ACTIVE</div></div>
-    <div class="stat"><div class="stat-num" id="solvedCases">0</div><div class="stat-label">SOLVED</div></div>
   </div>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('agents')">AGENTS</div>
-    <div class="tab" onclick="switchTab('cases')">CASES</div>
+    <div class="tab active" onclick="showTab('agents')">ENLISTMENTS</div>
+    <div class="tab" onclick="showTab('cases')">CASES</div>
   </div>
 
-  <!-- AGENTS TAB -->
   <div id="agentsTab">
-    <button class="add-btn" onclick="toggleForm()">+ ADD AGENT MANUALLY</button>
+    <button class="add-btn" onclick="toggleAdd()">+ ADD AGENT MANUALLY</button>
     <div id="addForm">
-      <h3>ADD AGENT</h3>
-      <input type="text" id="a-name" placeholder="Real name">
-      <input type="text" id="a-code" placeholder="Code name">
-      <input type="text" id="a-age" placeholder="Age">
-      <input type="text" id="a-school" placeholder="School">
-      <input type="text" id="a-location" placeholder="City & State">
-      <select id="a-rank">
-        <option value="RECRUIT">LEVEL 01 — RECRUIT</option>
-        <option value="AGENT">LEVEL 02 — AGENT</option>
-        <option value="SPECIALIST">LEVEL 03 — SPECIALIST</option>
-        <option value="COMMANDER">LEVEL 04 — COMMANDER</option>
-      </select>
-      <textarea id="a-why" placeholder="Why they joined (optional)"></textarea>
-      <button class="save" onclick="addAgent()">SAVE AGENT</button>
+      <label>REAL NAME</label><input id="f-name" placeholder="First and last">
+      <label>CODE NAME</label><input id="f-code" placeholder="Agent code name">
+      <label>AGE</label><input id="f-age" type="number" placeholder="Age">
+      <label>SCHOOL</label><input id="f-school" placeholder="School name">
+      <label>LOCATION</label><input id="f-loc" placeholder="City, State">
+      <label>WHY THEY JOINED</label><input id="f-why" placeholder="Optional">
+      <button class="add-btn" onclick="addAgentManual()">SAVE AGENT</button>
     </div>
     <div id="agentsList"></div>
   </div>
 
-  <!-- CASES TAB -->
   <div id="casesTab" style="display:none;">
-    <button class="add-btn" onclick="toggleCaseForm()">+ ADD CASE MANUALLY</button>
-    <div id="addCaseForm" style="display:none;" class="card">
-      <h3 style="font-family:'Orbitron',monospace;font-size:14px;color:#00ff41;letter-spacing:3px;margin-bottom:16px;">ADD CASE</h3>
-      <input type="text" id="c-name" placeholder="Victim name (first only)" style="width:100%;background:#000;border:none;border-bottom:1px solid #333;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px 4px;margin-bottom:12px;outline:none;">
-      <input type="text" id="c-school" placeholder="School" style="width:100%;background:#000;border:none;border-bottom:1px solid #333;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px 4px;margin-bottom:12px;outline:none;">
-      <input type="text" id="c-location" placeholder="City & State" style="width:100%;background:#000;border:none;border-bottom:1px solid #333;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px 4px;margin-bottom:12px;outline:none;">
-      <textarea id="c-desc" placeholder="What is happening?" style="width:100%;background:#000;border:1px solid #222;color:#00ff41;font-family:'Share Tech Mono',monospace;font-size:14px;padding:8px;margin-bottom:12px;outline:none;min-height:60px;"></textarea>
-      <button class="save" onclick="addCase()">SAVE CASE</button>
-    </div>
     <div id="casesList"></div>
   </div>
 </div>
 
 <script>
-const PASSWORD = "65870";
-const RANK_COLORS = { RECRUIT:"#00ff41", AGENT:"#33bbff", SPECIALIST:"#ffcc00", COMMANDER:"#ff6600" };
+const PASSWORD = "555390";
 
 function unlock(){
   if(document.getElementById('pw').value === PASSWORD){
     document.getElementById('lock').style.display = 'none';
-    document.getElementById('dash').style.display = 'block';
+    document.getElementById('dashboard').style.display = 'block';
     loadAll();
   } else {
     document.getElementById('err').style.display = 'block';
@@ -142,53 +111,54 @@ function unlock(){
   }
 }
 
-function switchTab(tab){
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById('agentsTab').style.display = tab==='agents' ? 'block' : 'none';
-  document.getElementById('casesTab').style.display = tab==='cases' ? 'block' : 'none';
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', (i===0&&tab==='agents')||(i===1&&tab==='cases')));
+  document.getElementById('agentsTab').style.display = tab==='agents'?'block':'none';
+  document.getElementById('casesTab').style.display = tab==='cases'?'block':'none';
 }
 
-function toggleForm(){ const f=document.getElementById('addForm'); f.style.display=f.style.display==='none'?'block':'none'; }
-function toggleCaseForm(){ const f=document.getElementById('addCaseForm'); f.style.display=f.style.display==='none'?'block':'none'; }
-
 function getAgents(){ return JSON.parse(localStorage.getItem('bold-agents')||'[]'); }
-function saveAgents(a){ localStorage.setItem('bold-agents', JSON.stringify(a)); }
 function getCases(){ return JSON.parse(localStorage.getItem('bold-cases')||'[]'); }
+function saveAgents(a){ localStorage.setItem('bold-agents', JSON.stringify(a)); }
 function saveCases(c){ localStorage.setItem('bold-cases', JSON.stringify(c)); }
 
-function addAgent(){
-  const name = document.getElementById('a-name').value.trim();
-  const code = document.getElementById('a-code').value.trim();
+const RANKS = ['RECRUIT','AGENT','SPECIALIST','COMMANDER'];
+
+function toggleAdd(){
+  const f = document.getElementById('addForm');
+  f.style.display = f.style.display==='none'?'block':'none';
+}
+
+function addAgentManual(){
+  const name = document.getElementById('f-name').value.trim();
+  const code = document.getElementById('f-code').value.trim();
   if(!name){ alert('Need a name!'); return; }
   const agents = getAgents();
-  agents.unshift({ id: Date.now(), name, code, age: document.getElementById('a-age').value.trim(), school: document.getElementById('a-school').value.trim(), location: document.getElementById('a-location').value.trim(), rank: document.getElementById('a-rank').value, why: document.getElementById('a-why').value.trim(), date: new Date().toLocaleDateString() });
+  agents.unshift({ id: Date.now(), name, codename: code||name, age: document.getElementById('f-age').value, school: document.getElementById('f-school').value, location: document.getElementById('f-loc').value, why: document.getElementById('f-why').value, rank: 'RECRUIT', date: new Date().toLocaleDateString() });
   saveAgents(agents);
   document.getElementById('addForm').style.display = 'none';
   loadAll();
 }
 
-function addCase(){
-  const name = document.getElementById('c-name').value.trim();
-  if(!name){ alert('Need a name!'); return; }
-  const cases = getCases();
-  cases.unshift({ id: Date.now(), name, school: document.getElementById('c-school').value.trim(), location: document.getElementById('c-location').value.trim(), desc: document.getElementById('c-desc').value.trim(), status: 'open', date: new Date().toLocaleDateString() });
-  saveCases(cases);
-  document.getElementById('addCaseForm').style.display = 'none';
+function setRank(id, rank){
+  const agents = getAgents();
+  const a = agents.find(x=>x.id===id);
+  if(a) a.rank = rank;
+  saveAgents(agents);
   loadAll();
 }
 
-function promoteAgent(id){
-  const agents = getAgents();
-  const ranks = ['RECRUIT','AGENT','SPECIALIST','COMMANDER'];
-  const a = agents.find(x=>x.id===id);
-  if(a){ const i = ranks.indexOf(a.rank); if(i < ranks.length-1) a.rank = ranks[i+1]; }
-  saveAgents(agents); loadAll();
+function deleteAgent(id){
+  if(!confirm('Remove this agent?')) return;
+  saveAgents(getAgents().filter(x=>x.id!==id));
+  loadAll();
 }
 
-function deleteAgent(id){ if(!confirm('Remove agent?')) return; saveAgents(getAgents().filter(x=>x.id!==id)); loadAll(); }
-function setCaseStatus(id, status){ const cases=getCases(); const c=cases.find(x=>x.id===id); if(c) c.status=status; saveCases(cases); loadAll(); }
-function deleteCase(id){ if(!confirm('Delete case?')) return; saveCases(getCases().filter(x=>x.id!==id)); loadAll(); }
+function deleteCase(id){
+  if(!confirm('Close this case?')) return;
+  saveCases(getCases().filter(x=>x.id!==id));
+  loadAll();
+}
 
 function loadAll(){
   const agents = getAgents();
@@ -196,54 +166,49 @@ function loadAll(){
 
   document.getElementById('totalAgents').textContent = agents.length;
   document.getElementById('totalCases').textContent = cases.length;
-  document.getElementById('activeCases').textContent = cases.filter(c=>c.status==='open').length;
-  document.getElementById('solvedCases').textContent = cases.filter(c=>c.status==='solved').length;
 
   const al = document.getElementById('agentsList');
-  if(agents.length === 0){ al.innerHTML = '<div class="empty">NO AGENTS YET — ADD YOUR FIRST RECRUIT</div>'; }
-  else {
+  if(agents.length === 0){
+    al.innerHTML = '<div class="empty">> NO AGENTS YET. SHARE THE LINK.</div>';
+  } else {
     al.innerHTML = agents.map(a => `
       <div class="card">
         <div class="card-top">
-          <div class="card-name">${a.code || a.name}</div>
-          <div class="card-rank" style="color:${RANK_COLORS[a.rank]||'#00ff41'};border-color:${RANK_COLORS[a.rank]||'#00ff41'}">${a.rank}</div>
+          <div class="card-name">${a.codename||a.name}</div>
+          <div class="card-rank">${a.rank||'RECRUIT'}</div>
         </div>
         <div class="card-detail"><span>REAL NAME:</span> ${a.name}</div>
-        ${a.age ? `<div class="card-detail"><span>AGE:</span> ${a.age}</div>` : ''}
-        ${a.school ? `<div class="card-detail"><span>SCHOOL:</span> ${a.school}</div>` : ''}
-        ${a.location ? `<div class="card-detail"><span>LOCATION:</span> ${a.location}</div>` : ''}
-        ${a.why ? `<div class="card-detail"><span>WHY:</span> ${a.why}</div>` : ''}
-        <div class="card-detail"><span>ENLISTED:</span> ${a.date}</div>
-        <div class="card-actions">
-          <button class="act-btn" onclick="promoteAgent(${a.id})">↑ PROMOTE</button>
-          <button class="act-btn del" onclick="deleteAgent(${a.id})">✕ REMOVE</button>
+        <div class="card-detail"><span>AGE:</span> ${a.age||'—'}</div>
+        <div class="card-detail"><span>SCHOOL:</span> ${a.school||'—'}</div>
+        <div class="card-detail"><span>LOCATION:</span> ${a.location||'—'}</div>
+        <div class="card-detail"><span>DATE:</span> ${a.date||'—'}</div>
+        ${a.why?`<div class="card-why">${a.why}</div>`:''}
+        <div class="rank-btns">
+          ${RANKS.map(r=>`<button class="rank-btn ${a.rank===r?'active':''}" onclick="setRank(${a.id},'${r}')">${r}</button>`).join('')}
+          <button class="del-btn" onclick="deleteAgent(${a.id})">✕ REMOVE</button>
         </div>
       </div>`).join('');
   }
 
   const cl = document.getElementById('casesList');
-  if(cases.length === 0){ cl.innerHTML = '<div class="empty">NO CASES YET</div>'; }
-  else {
-    cl.innerHTML = cases.map(c => {
-      const color = c.status==='solved'?'#00ff41':c.status==='assigned'?'#ffcc00':'#ff3333';
-      return `
-      <div class="card" style="border-color:${color}22">
+  if(cases.length === 0){
+    cl.innerHTML = '<div class="empty">> NO CASES OPENED YET.</div>';
+  } else {
+    cl.innerHTML = cases.map(c => `
+      <div class="card">
         <div class="card-top">
           <div class="card-name">${c.name}</div>
-          <div class="card-rank" style="color:${color};border-color:${color}">${c.status.toUpperCase()}</div>
+          <div class="card-rank" style="color:#ff4444;border-color:#330000;">ACTIVE CASE</div>
         </div>
-        ${c.school ? `<div class="card-detail"><span>SCHOOL:</span> ${c.school}</div>` : ''}
-        ${c.location ? `<div class="card-detail"><span>LOCATION:</span> ${c.location}</div>` : ''}
-        ${c.desc ? `<div class="card-detail"><span>CASE:</span> ${c.desc}</div>` : ''}
-        <div class="card-detail"><span>OPENED:</span> ${c.date}</div>
-        <div class="card-actions">
-          <button class="act-btn ${c.status==='open'?'active':''}" onclick="setCaseStatus(${c.id},'open')">OPEN</button>
-          <button class="act-btn ${c.status==='assigned'?'active':''}" onclick="setCaseStatus(${c.id},'assigned')">ASSIGNED</button>
-          <button class="act-btn ${c.status==='solved'?'active':''}" onclick="setCaseStatus(${c.id},'solved')">SOLVED</button>
-          <button class="act-btn del" onclick="deleteCase(${c.id})">✕ DELETE</button>
+        <div class="card-detail"><span>AGE:</span> ${c.age||'—'}</div>
+        <div class="card-detail"><span>SCHOOL:</span> ${c.school||'—'}</div>
+        <div class="card-detail"><span>LOCATION:</span> ${c.location||'—'}</div>
+        <div class="card-detail"><span>EMAIL:</span> ${c.email||'—'}</div>
+        ${c.description?`<div class="card-why" style="border-color:#330000;">${c.description}</div>`:''}
+        <div class="rank-btns">
+          <button class="del-btn" style="margin-left:0;border-color:#330000;color:#550000;" onclick="deleteCase(${c.id})">✕ CLOSE CASE</button>
         </div>
-      </div>`;
-    }).join('');
+      </div>`).join('');
   }
 }
 </script>
