@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B.O.L.D — Bullying Operation Leadership Division</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#000;color:#fff;font-family:'Share Tech Mono',monospace;overflow-x:hidden;}
+
+/* SCANLINE EFFECT */
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.05) 2px,rgba(0,0,0,0.05) 4px);pointer-events:none;z-index:1000;}
+
+/* NAV */
+nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #333;background:#000;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Orbitron',monospace;font-size:22px;font-weight:900;letter-spacing:6px;color:#fff;}
+.nav-logo span{color:#00ff41;}
+.nav-status{font-size:11px;color:#00ff41;letter-spacing:2px;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:#555;text-decoration:none;font-size:13px;letter-spacing:2px;transition:color 0.2s;}
+.nav-links a:hover{color:#00ff41;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden;}
+.grid-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0,255,65,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,0.03) 1px,transparent 1px);background-size:40px 40px;}
+
+.classified{font-size:11px;letter-spacing:6px;color:#00ff41;margin-bottom:24px;border:1px solid #00ff41;display:inline-block;padding:4px 16px;}
+#hero h1{font-family:'Orbitron',monospace;font-size:clamp(48px,9vw,110px);font-weight:900;letter-spacing:8px;line-height:1;margin-bottom:20px;position:relative;z-index:1;}
+#hero h1 .green{color:#00ff41;text-shadow:0 0 30px rgba(0,255,65,0.5);}
+.fullname{font-size:clamp(13px,1.8vw,17px);letter-spacing:4px;color:#555;margin-bottom:30px;position:relative;z-index:1;}
+.tagline{font-size:clamp(15px,2vw,20px);color:#999;margin-bottom:50px;max-width:600px;line-height:1.8;position:relative;z-index:1;}
+
+/* TYPING EFFECT */
+.typing{color:#00ff41;font-size:14px;letter-spacing:2px;margin-bottom:40px;}
+.cursor{animation:blink 1s infinite;}
+
+.btn-classified{background:transparent;border:2px solid #00ff41;border-radius:0;padding:14px 40px;color:#00ff41;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:all 0.2s;display:inline-block;}
+.btn-classified:hover{background:#00ff41;color:#000;}
+.btn-white{background:transparent;border:2px solid #fff;border-radius:0;padding:14px 40px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:all 0.2s;display:inline-block;}
+.btn-white:hover{background:#fff;color:#000;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* STATS */
+#stats{background:#000;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:40px 20px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Orbitron',monospace;font-size:48px;font-weight:900;color:#00ff41;}
+.stat-label{font-size:11px;color:#555;letter-spacing:3px;margin-top:6px;}
+
+/* MISSION */
+#mission{padding:80px 20px;border-bottom:1px solid #1a1a1a;}
+#mission .inner{max-width:800px;margin:0 auto;}
+.section-tag{font-size:11px;letter-spacing:4px;color:#00ff41;margin-bottom:16px;}
+#mission h2{font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,42px);font-weight:900;letter-spacing:4px;margin-bottom:24px;}
+#mission p{color:#999;font-size:16px;line-height:2;margin-bottom:20px;}
+.mission-box{border:1px solid #00ff41;padding:24px;margin-top:30px;background:rgba(0,255,65,0.03);}
+.mission-box p{color:#00ff41;font-size:15px;line-height:1.8;margin:0;}
+
+/* HOW */
+#how{padding:80px 20px;border-bottom:1px solid #1a1a1a;}
+#how .inner{max-width:900px;margin:0 auto;}
+#how h2{font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:40px;}
+.ranks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.rank{border:1px solid #222;padding:24px 20px;background:#050505;transition:border-color 0.3s;}
+.rank:hover{border-color:#00ff41;}
+.rank-level{font-size:11px;color:#00ff41;letter-spacing:3px;margin-bottom:8px;}
+.rank-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;margin-bottom:10px;}
+.rank-desc{font-size:13px;color:#555;line-height:1.6;}
+
+/* JOIN */
+#join{padding:80px 20px;border-bottom:1px solid #1a1a1a;}
+#join .inner{max-width:600px;margin:0 auto;}
+#join h2{font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;}
+#join .sub{color:#555;font-size:14px;letter-spacing:2px;margin-bottom:40px;}
+form{text-align:left;}
+.form-label{font-size:12px;letter-spacing:3px;color:#00ff41;display:block;margin-bottom:6px;}
+input,select,textarea{width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;transition:border-color 0.2s;}
+input:focus,select:focus,textarea:focus{border-color:#00ff41;}
+select option{background:#000;}
+textarea{height:80px;resize:none;}
+.submit-btn{background:#00ff41;border:none;padding:14px;color:#000;font-size:15px;font-weight:900;cursor:pointer;width:100%;font-family:'Orbitron',monospace;letter-spacing:4px;transition:opacity 0.2s;}
+.submit-btn:hover{opacity:0.85;}
+
+/* DIRECTOR */
+#director{padding:80px 20px;}
+#director .inner{max-width:700px;margin:0 auto;text-align:center;}
+#director h2{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:4px;margin-bottom:20px;}
+#director p{color:#555;font-size:15px;line-height:2;margin-bottom:20px;}
+.director-badge{border:1px solid #00ff41;display:inline-block;padding:20px 40px;margin-top:10px;}
+.director-badge .name{font-family:'Orbitron',monospace;font-size:22px;color:#00ff41;margin-bottom:4px;}
+.director-badge .title{font-size:12px;letter-spacing:3px;color:#555;}
+
+footer{background:#000;border-top:1px solid #1a1a1a;padding:30px 20px;text-align:center;}
+footer p{color:#333;font-size:12px;letter-spacing:2px;}
+footer span{color:#00ff41;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">B.<span>O</span>.L.D</div>
+  <div class="nav-status">● ACTIVE</div>
+  <div class="nav-links">
+    <a href="#mission">MISSION</a>
+    <a href="#how">RANKS</a>
+    <a href="#join">ENLIST</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="classified">CLASSIFIED — AUTHORIZED AGENTS ONLY</div>
+  <h1>B.<span class="green">O</span>.L.D</h1>
+  <div class="fullname">BULLYING OPERATION LEADERSHIP DIVISION</div>
+  <div class="tagline">A global network of undercover kid agents. We go into schools, find bullies, and shut them down. No bully gets away. Not on our watch.</div>
+  <div class="typing" id="typing"></div>
+  <div class="hero-btns">
+    <a href="#join" class="btn-classified">ENLIST NOW</a>
+    <a href="#mission" class="btn-white">READ MISSION</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat"><div class="stat-num">1</div><div class="stat-label">DIRECTOR</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">BULLIES STOPPED</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">KIDS PROTECTED</div></div>
+  <div class="stat"><div class="stat-num">🌍</div><div class="stat-label">WORLDWIDE</div></div>
+</div>
+
+<!-- MISSION -->
+<section id="mission">
+  <div class="inner">
+    <div class="section-tag">// MISSION BRIEFING</div>
+    <h2>WHY B.O.L.D EXISTS</h2>
+    <p>Every day, kids all over the world get bullied. They feel alone, scared, and like nobody is coming to help them. Teachers don't always see it. Parents don't always know. But other kids do.</p>
+    <p>B.O.L.D agents are kids who go undercover in their own schools and neighborhoods. They watch. They report. They protect. They stop bullying before it gets worse.</p>
+    <p>This is not a club. This is not a game. This is a real operation.</p>
+    <div class="mission-box">
+      <p>> MISSION: Identify, report, and stop bullying in schools and communities worldwide. Protect every kid who cannot protect themselves. Leave no one behind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RANKS -->
+<section id="how">
+  <div class="inner">
+    <div class="section-tag">// AGENT RANKS</div>
+    <h2>YOUR RANK IN B.O.L.D</h2>
+    <div class="ranks">
+      <div class="rank">
+        <div class="rank-level">LEVEL 01</div>
+        <div class="rank-name">RECRUIT</div>
+        <div class="rank-desc">Just enlisted. Learning the mission. Watching and reporting bullying in your school.</div>
+      </div>
+      <div class="rank">
+        <div class="rank-level">LEVEL 02</div>
+        <div class="rank-name">AGENT</div>
+        <div class="rank-desc">Active undercover. You've stopped at least one bullying situation and reported it.</div>
+      </div>
+      <div class="rank">
+        <div class="rank-level">LEVEL 03</div>
+        <div class="rank-name">SPECIALIST</div>
+        <div class="rank-desc">You recruited other agents and lead a squad in your school or neighborhood.</div>
+      </div>
+      <div class="rank">
+        <div class="rank-level">LEVEL 04</div>
+        <div class="rank-name">COMMANDER</div>
+        <div class="rank-desc">You run a full B.O.L.D unit. Multiple agents. Multiple schools. Real impact.</div>
+      </div>
+      <div class="rank">
+        <div class="rank-level">LEVEL 05</div>
+        <div class="rank-name">DIRECTOR</div>
+        <div class="rank-desc">Oliver Vo. Age 10. Founder. The highest rank. Only one exists.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section id="join">
+  <div class="inner">
+    <div class="section-tag">// ENLISTMENT FORM</div>
+    <h2>ENLIST IN B.O.L.D</h2>
+    <div class="sub">THIS INFORMATION IS CLASSIFIED. AGENTS ONLY.</div>
+    <form action="https://formsubmit.co/truongnvo@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New B.O.L.D Agent Enlistment!">
+      <input type="hidden" name="_next" value="https://oliveryvo-cmd.github.io/bold/thanks.html">
+      <input type="hidden" name="_captcha" value="false">
+      <label class="form-label">// YOUR NAME</label>
+      <input type="text" name="Name" placeholder="First name only" required>
+      <label class="form-label">// YOUR AGE</label>
+      <input type="number" name="Age" placeholder="Your age" required>
+      <label class="form-label">// YOUR CITY & STATE</label>
+      <input type="text" name="Location" placeholder="e.g. Ladera Ranch, CA" required>
+      <label class="form-label">// YOUR SCHOOL</label>
+      <input type="text" name="School" placeholder="Your school name" required>
+      <label class="form-label">// WHY DO YOU WANT TO JOIN B.O.L.D?</label>
+      <textarea name="Why" placeholder="Tell us why you want to stop bullying..."></textarea>
+      <label class="form-label">// HAVE YOU EVER BEEN BULLIED?</label>
+      <select name="Bullied">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="I've seen others bullied">I've seen others bullied</option>
+      </select>
+      <button type="submit" class="submit-btn">SUBMIT ENLISTMENT</button>
+    </form>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section id="director">
+  <div class="inner">
+    <div class="section-tag">// DIRECTOR</div>
+    <h2>FOUNDED BY</h2>
+    <p>B.O.L.D was founded by Oliver Vo, age 10, from Ladera Ranch, CA. Oliver has Tourette syndrome and knows what it feels like to be different. He started B.O.L.D because no kid should ever feel alone against a bully. He is also the founder of BrightWing and D.O.V.E LLC.</p>
+    <div class="director-badge">
+      <div class="name">OLIVER VO</div>
+      <div class="title">DIRECTOR · B.O.L.D · AGE 10</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>B.O.L.D</span> — BULLYING OPERATION LEADERSHIP DIVISION · FOUNDED BY OLIVER VO · AGE 10 · A D.O.V.E LLC OPERATION</p>
+</footer>
+
+<script>
+const lines = [
+  '> SYSTEM ONLINE...',
+  '> AGENTS WORLDWIDE: ACTIVE',
+  '> MISSION STATUS: ONGOING',
+  '> BULLIES BEWARE.',
+];
+let lineIndex = 0, charIndex = 0;
+const el = document.getElementById('typing');
+function type(){
+  if(lineIndex >= lines.length){ lineIndex = 0; el.textContent = ''; }
+  if(charIndex < lines[lineIndex].length){
+    el.textContent += lines[lineIndex][charIndex++];
+    setTimeout(type, 60);
+  } else {
+    setTimeout(() => { el.textContent = ''; charIndex = 0; lineIndex++; type(); }, 1500);
+  }
+}
+type();
+</script>
+</body>
+</html>
