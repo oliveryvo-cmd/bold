@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B.O.L.D — Enlist</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#000;color:#00ff41;font-family:'Share Tech Mono',monospace;min-height:100vh;padding:40px 20px;}
+.wrap{max-width:620px;margin:0 auto;}
+
+.top{text-align:center;margin-bottom:40px;}
+.top a{color:#00ff41;font-size:12px;letter-spacing:3px;text-decoration:none;opacity:0.5;}
+.top a:hover{opacity:1;}
+h1{font-family:'Orbitron',monospace;font-size:48px;font-weight:900;color:#00ff41;letter-spacing:6px;margin:16px 0 8px;}
+.sub{font-size:13px;color:#555;letter-spacing:2px;margin-bottom:8px;}
+.divider{border:none;border-top:1px solid #111;margin:24px 0;}
+
+.status{font-size:12px;color:#00ff41;margin-bottom:32px;text-align:center;}
+.blink{animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+label{display:block;font-size:11px;letter-spacing:3px;color:#555;margin-bottom:6px;margin-top:20px;}
+input,select,textarea{
+  width:100%;
+  background:#000;
+  border:none;
+  border-bottom:1px solid #00ff41;
+  color:#00ff41;
+  font-family:'Share Tech Mono',monospace;
+  font-size:15px;
+  padding:10px 4px;
+  outline:none;
+  transition:border-color 0.2s;
+}
+input:focus,select:focus,textarea:focus{border-bottom-color:#fff;}
+select option{background:#000;}
+textarea{resize:vertical;min-height:80px;border:1px solid #111;border-bottom:1px solid #00ff41;padding:10px;}
+
+.oath{border:1px solid #111;padding:20px;margin:32px 0;font-size:13px;line-height:2.2;color:#333;}
+.oath span{color:#00ff41;}
+
+.agree{display:flex;align-items:flex-start;gap:12px;margin-top:24px;font-size:13px;color:#555;cursor:pointer;}
+.agree input[type=checkbox]{width:auto;accent-color:#00ff41;margin-top:3px;flex-shrink:0;}
+
+button{
+  display:block;
+  width:100%;
+  margin-top:32px;
+  background:#000;
+  border:1px solid #00ff41;
+  color:#00ff41;
+  font-family:'Orbitron',monospace;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:4px;
+  padding:16px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+button:hover{background:#00ff41;color:#000;}
+
+.footer{text-align:center;margin-top:48px;font-size:11px;color:#222;letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a href="https://oliveryvo-cmd.github.io/bold/">← RETURN TO BASE</a>
+    <h1>ENLIST</h1>
+    <div class="sub">BULLYING OPERATION LEADERSHIP DIVISION</div>
+    <div class="sub">ALL RECRUITS START AT LEVEL 01 · RANK UP BY TAKING ACTION</div>
+  </div>
+
+  <div class="status"><span class="blink">▮</span> ENLISTMENT PORTAL ACTIVE — REVIEWED BY DIRECTOR OLIVER VO</div>
+
+  <hr class="divider">
+
+  <form action="https://formsubmit.co/truongnvo@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="🛡 NEW B.O.L.D ENLISTMENT">
+    <input type="hidden" name="_next" value="https://oliveryvo-cmd.github.io/bold/thanks.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <label>YOUR REAL NAME</label>
+    <input type="text" name="real_name" placeholder="First and last name" required>
+
+    <label>CHOOSE YOUR CODE NAME</label>
+    <input type="text" name="code_name" placeholder="e.g. Shadow, Falcon, Ghost, Viper..." required>
+
+    <label>AGE</label>
+    <input type="number" name="age" placeholder="How old are you?" min="5" max="18" required>
+
+    <label>SCHOOL</label>
+    <input type="text" name="school" placeholder="Your school name" required>
+
+    <label>CITY & STATE</label>
+    <input type="text" name="location" placeholder="e.g. Ladera Ranch, CA" required>
+
+    <label>WHY DO YOU WANT TO JOIN B.O.L.D?</label>
+    <textarea name="why" placeholder="Tell Director Oliver Vo why you're ready to be an agent..." required></textarea>
+
+    <label>HAVE YOU EVER BEEN BULLIED OR SEEN BULLYING HAPPEN?</label>
+    <select name="experience" required>
+      <option value="" disabled selected>-- SELECT --</option>
+      <option value="Yes, I have been bullied">Yes, I have been bullied</option>
+      <option value="Yes, I have seen it happen to someone else">Yes, I have seen it happen to someone else</option>
+      <option value="Both — been bullied and seen it">Both — been bullied and seen it</option>
+      <option value="Not yet but I want to help stop it">Not yet, but I want to help stop it</option>
+    </select>
+
+    <label>IF YOU SAW SOMEONE BEING BULLIED RIGHT NOW — WHAT WOULD YOU DO?</label>
+    <textarea name="action" placeholder="Describe your move. Be specific." required></textarea>
+
+    <hr class="divider">
+
+    <div class="oath">
+      <span>THE B.O.L.D OATH:</span><br><br>
+      "I will protect every kid who cannot protect themselves.<br>
+      I will never fight, never bully back, never give up.<br>
+      I am B.O.L.D."
+    </div>
+
+    <div class="agree">
+      <input type="checkbox" name="oath_taken" value="yes" required>
+      <span>I have read the B.O.L.D oath and agent rules. I understand this is a real organization and my mission is real.</span>
+    </div>
+
+    <button type="submit">SUBMIT ENLISTMENT →</button>
+  </form>
+
+  <div class="footer">B.O.L.D · Founded by Oliver Vo, Age 10 · Ladera Ranch, CA<br><br>oliveryvo-cmd.github.io/bold</div>
+
+</div>
+</body>
+</html>
