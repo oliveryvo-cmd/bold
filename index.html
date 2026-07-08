@@ -5,16 +5,16 @@
 <title>B.O.L.D — Bullying Operation Leadership Division</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#000;color:#fff;font-family:'Share Tech Mono',monospace;overflow-x:hidden;}
+body{background:#000;color:#fff;font-family:'Nunito',Arial,sans-serif;overflow-x:hidden;}
 
 /* SCANLINE */
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,0,180,0.015) 2px,rgba(255,0,180,0.015) 4px);pointer-events:none;z-index:1000;}
 
 /* NAV */
 nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #ff00b4;background:#000;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:10px;}
-.nav-logo{font-family:'Orbitron',monospace;font-size:22px;font-weight:900;letter-spacing:6px;color:#fff;}
+.nav-logo{font-family:'Fredoka One',cursive;font-size:22px;font-weight:900;letter-spacing:6px;color:#fff;}
 .nav-logo span{color:#00ff41;}
 .nav-status{font-size:11px;color:#ff00b4;letter-spacing:2px;animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
@@ -28,7 +28,7 @@ nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-betw
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden;}
 .grid-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(255,0,180,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,0.03) 1px,transparent 1px);background-size:40px 40px;}
 .classified{font-size:11px;letter-spacing:6px;color:#ff00b4;margin-bottom:24px;border:2px solid #ff00b4;border-radius:50px;display:inline-block;padding:6px 20px;animation:float 3s ease-in-out infinite;}
-#hero h1{font-family:'Orbitron',monospace;font-size:clamp(48px,9vw,110px);font-weight:900;letter-spacing:8px;line-height:1;margin-bottom:20px;position:relative;z-index:1;animation:glow 2s ease-in-out infinite;}
+#hero h1{font-family:'Fredoka One',cursive;font-size:clamp(48px,9vw,110px);font-weight:900;letter-spacing:8px;line-height:1;margin-bottom:20px;position:relative;z-index:1;animation:glow 2s ease-in-out infinite;}
 #hero h1 .green{color:#00ff41;}
 #hero h1 .pink{color:#ff00b4;}
 .fullname{font-size:clamp(13px,1.8vw,17px);letter-spacing:4px;color:#444;margin-bottom:30px;position:relative;z-index:1;}
@@ -38,11 +38,11 @@ nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-betw
 .typing{color:#00ff41;font-size:14px;letter-spacing:2px;margin-bottom:40px;}
 
 /* BUTTONS */
-.btn-classified{background:transparent;border:2px solid #ff00b4;border-radius:50px;padding:14px 40px;color:#ff00b4;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:all 0.2s;display:inline-block;box-shadow:0 0 20px rgba(255,0,180,0.2);}
+.btn-classified{background:transparent;border:2px solid #ff00b4;border-radius:50px;padding:14px 40px;color:#ff00b4;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Nunito',Arial,sans-serif;transition:all 0.2s;display:inline-block;box-shadow:0 0 20px rgba(255,0,180,0.2);}
 .btn-classified:hover{background:#ff00b4;color:#000;box-shadow:0 0 40px rgba(255,0,180,0.5);}
-.btn-green{background:transparent;border:2px solid #00ff41;border-radius:50px;padding:14px 40px;color:#00ff41;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:all 0.2s;display:inline-block;box-shadow:0 0 20px rgba(0,255,65,0.2);}
+.btn-green{background:transparent;border:2px solid #00ff41;border-radius:50px;padding:14px 40px;color:#00ff41;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Nunito',Arial,sans-serif;transition:all 0.2s;display:inline-block;box-shadow:0 0 20px rgba(0,255,65,0.2);}
 .btn-green:hover{background:#00ff41;color:#000;box-shadow:0 0 40px rgba(0,255,65,0.5);}
-.btn-white{background:transparent;border:2px solid #333;border-radius:50px;padding:14px 40px;color:#555;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Share Tech Mono',monospace;transition:all 0.2s;display:inline-block;}
+.btn-white{background:transparent;border:2px solid #333;border-radius:50px;padding:14px 40px;color:#555;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:4px;text-decoration:none;font-family:'Nunito',Arial,sans-serif;transition:all 0.2s;display:inline-block;}
 .btn-white:hover{border-color:#fff;color:#fff;}
 .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
@@ -50,14 +50,14 @@ nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-betw
 #stats{background:#050505;border-top:2px solid #111;border-bottom:2px solid #111;padding:40px 20px;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
 .stat{text-align:center;padding:20px 40px;border-right:1px solid #111;}
 .stat:last-child{border-right:none;}
-.stat-num{font-family:'Orbitron',monospace;font-size:48px;font-weight:900;color:#00ff41;}
+.stat-num{font-family:'Fredoka One',cursive;font-size:48px;font-weight:900;color:#00ff41;}
 .stat-label{font-size:11px;color:#444;letter-spacing:3px;margin-top:6px;}
 
 /* MISSION */
 #mission{padding:80px 20px;border-bottom:1px solid #111;}
 #mission .inner{max-width:800px;margin:0 auto;}
 .section-tag{font-size:11px;letter-spacing:4px;color:#ff00b4;margin-bottom:16px;}
-#mission h2{font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,42px);font-weight:900;letter-spacing:4px;margin-bottom:24px;color:#fff;}
+#mission h2{font-family:'Fredoka One',cursive;font-size:clamp(24px,4vw,42px);font-weight:900;letter-spacing:4px;margin-bottom:24px;color:#fff;}
 #mission p{color:#666;font-size:16px;line-height:2;margin-bottom:20px;}
 .mission-box{border:2px solid #ff00b4;border-radius:16px;padding:24px;margin-top:30px;background:rgba(255,0,180,0.04);box-shadow:0 0 30px rgba(255,0,180,0.1);}
 .mission-box p{color:#ff00b4;font-size:15px;line-height:1.8;margin:0;}
@@ -65,35 +65,35 @@ nav{padding:16px 40px;display:flex;align-items:center;justify-content:space-betw
 /* HOW */
 #how{padding:80px 20px;border-bottom:1px solid #111;}
 #how .inner{max-width:900px;margin:0 auto;}
-#how h2{font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:40px;color:#fff;}
+#how h2{font-family:'Fredoka One',cursive;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:40px;color:#fff;}
 .ranks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
 .rank{border:2px solid #111;border-radius:16px;padding:24px 20px;background:#050505;transition:all 0.3s;text-align:center;}
 .rank:hover{border-color:#ff00b4;box-shadow:0 0 20px rgba(255,0,180,0.15);transform:translateY(-4px);}
 .rank-level{font-size:11px;color:#ff00b4;letter-spacing:3px;margin-bottom:8px;}
-.rank-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;margin-bottom:10px;color:#00ff41;}
+.rank-name{font-family:'Fredoka One',cursive;font-size:18px;font-weight:900;margin-bottom:10px;color:#00ff41;}
 .rank-desc{font-size:13px;color:#555;line-height:1.6;}
 
 /* JOIN */
 #join{padding:80px 20px;border-bottom:1px solid #111;}
 #join .inner{max-width:600px;margin:0 auto;}
-#join h2{font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;color:#fff;}
+#join h2{font-family:'Fredoka One',cursive;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;color:#fff;}
 #join .sub{color:#444;font-size:14px;letter-spacing:2px;margin-bottom:40px;}
 form{text-align:left;}
 .form-label{font-size:12px;letter-spacing:3px;color:#ff00b4;display:block;margin-bottom:6px;}
-input,select,textarea{width:100%;padding:12px 16px;background:#050505;border:1px solid #1a1a1a;border-bottom:2px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;transition:border-color 0.2s;border-radius:8px;}
+input,select,textarea{width:100%;padding:12px 16px;background:#050505;border:1px solid #1a1a1a;border-bottom:2px solid #333;color:#fff;font-size:14px;font-family:'Nunito',Arial,sans-serif;margin-bottom:20px;outline:none;transition:border-color 0.2s;border-radius:8px;}
 input:focus,select:focus,textarea:focus{border-color:#ff00b4;}
 select option{background:#000;}
 textarea{height:80px;resize:none;}
-.submit-btn{background:linear-gradient(135deg,#ff00b4,#00ff41);border:none;border-radius:50px;padding:14px;color:#000;font-size:15px;font-weight:900;cursor:pointer;width:100%;font-family:'Orbitron',monospace;letter-spacing:4px;transition:opacity 0.2s;box-shadow:0 0 30px rgba(255,0,180,0.3);}
+.submit-btn{background:linear-gradient(135deg,#ff00b4,#00ff41);border:none;border-radius:50px;padding:14px;color:#000;font-size:15px;font-weight:900;cursor:pointer;width:100%;font-family:'Fredoka One',cursive;letter-spacing:4px;transition:opacity 0.2s;box-shadow:0 0 30px rgba(255,0,180,0.3);}
 .submit-btn:hover{opacity:0.85;}
 
 /* DIRECTOR */
 #director{padding:80px 20px;}
 #director .inner{max-width:700px;margin:0 auto;text-align:center;}
-#director h2{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:4px;margin-bottom:20px;color:#fff;}
+#director h2{font-family:'Fredoka One',cursive;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:4px;margin-bottom:20px;color:#fff;}
 #director p{color:#555;font-size:15px;line-height:2;margin-bottom:20px;}
 .director-badge{border:2px solid #ff00b4;border-radius:20px;display:inline-block;padding:24px 48px;margin-top:10px;box-shadow:0 0 40px rgba(255,0,180,0.2);}
-.director-badge .name{font-family:'Orbitron',monospace;font-size:22px;color:#00ff41;margin-bottom:4px;}
+.director-badge .name{font-family:'Fredoka One',cursive;font-size:22px;color:#00ff41;margin-bottom:4px;}
 .director-badge .title{font-size:12px;letter-spacing:3px;color:#ff00b4;}
 
 footer{background:#000;border-top:2px solid #ff00b4;padding:30px 20px;text-align:center;}
@@ -222,7 +222,7 @@ footer span{color:#00ff41;}
 <section id="case" style="padding:80px 20px;border-bottom:1px solid #1a1a1a;">
   <div class="inner" style="max-width:600px;margin:0 auto;">
     <div class="section-tag">// OPEN A CASE</div>
-    <h2 style="font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;">BEING BULLIED?</h2>
+    <h2 style="font-family:'Fredoka One',cursive;font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:4px;margin-bottom:10px;">BEING BULLIED?</h2>
     <div style="color:#555;font-size:14px;letter-spacing:2px;margin-bottom:16px;">WE WILL SEND AN AGENT. 100% FREE.</div>
     <div style="border:1px solid #333;padding:16px;margin-bottom:30px;background:#050505;">
       <p style="color:#00ff41;font-size:13px;line-height:1.8;">> Fill out the form below.<br>> Director Oliver Vo reviews your case.<br>> A B.O.L.D agent near you is assigned.<br>> They go undercover and stop the bullying.<br>> If you want to support B.O.L.D, donate any amount. Never required.</p>
@@ -240,9 +240,9 @@ footer span{color:#00ff41;}
       <label class="form-label">// YOUR SCHOOL</label>
       <input type="text" name="School" placeholder="Your school name" required>
       <label class="form-label">// DESCRIBE THE BULLYING</label>
-      <textarea name="Description" placeholder="What is happening? Who is doing it? Where does it happen?" style="height:100px;resize:none;width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;" required></textarea>
+      <textarea name="Description" placeholder="What is happening? Who is doing it? Where does it happen?" style="height:100px;resize:none;width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Nunito',Arial,sans-serif;margin-bottom:20px;outline:none;" required></textarea>
       <label class="form-label">// HOW LONG HAS IT BEEN HAPPENING?</label>
-      <select name="Duration" style="width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Share Tech Mono',monospace;margin-bottom:20px;outline:none;">
+      <select name="Duration" style="width:100%;padding:12px 16px;background:#050505;border:1px solid #333;color:#fff;font-size:14px;font-family:'Nunito',Arial,sans-serif;margin-bottom:20px;outline:none;">
         <option>Just started</option>
         <option>A few weeks</option>
         <option>A few months</option>
