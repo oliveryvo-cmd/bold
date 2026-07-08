@@ -6,6 +6,30 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+
+/* MAP */
+#agent-map{height:420px;border:1px solid #00ff41;margin-top:0;}
+.leaflet-container{background:#000 !important;}
+
+/* STORE */
+.store-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.store-card{border:1px solid #111;padding:24px;text-align:center;transition:border-color 0.2s;}
+.store-card:hover{border-color:#00ff41;}
+.store-icon{font-size:48px;margin-bottom:12px;}
+.store-name{font-family:'Orbitron',monospace;font-size:14px;color:#fff;margin-bottom:6px;}
+.store-desc{font-size:12px;color:#555;line-height:1.5;margin-bottom:16px;}
+.store-price{font-size:20px;color:#00ff41;font-family:'Orbitron',monospace;font-weight:900;margin-bottom:16px;}
+.store-btn{display:inline-block;border:1px solid #00ff41;color:#00ff41;font-family:'Orbitron',monospace;font-size:11px;letter-spacing:3px;padding:10px 20px;text-decoration:none;cursor:pointer;background:#000;transition:all 0.2s;}
+.store-btn:hover{background:#00ff41;color:#000;}
+
+/* COUNTDOWN */
+.countdown-wrap{text-align:center;padding:40px 20px;}
+.countdown-label{font-size:11px;letter-spacing:4px;color:#555;margin-bottom:20px;}
+.countdown-title{font-family:'Orbitron',monospace;font-size:24px;color:#fff;margin-bottom:30px;}
+.countdown-boxes{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.cd-box{text-align:center;border:1px solid #00ff41;padding:20px 28px;}
+.cd-num{font-family:'Orbitron',monospace;font-size:52px;font-weight:900;color:#00ff41;line-height:1;}
+.cd-label{font-size:10px;letter-spacing:3px;color:#555;margin-top:8px;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#000;color:#00ff41;font-family:'Share Tech Mono',monospace;overflow-x:hidden;}
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px);pointer-events:none;z-index:999;}
@@ -121,6 +145,8 @@ footer a:hover{color:#00ff41;}
     <a href="#leaderboard">LEADERBOARD</a>
     <a href="#cases">CASES</a>
     <a href="#missions">MISSIONS</a>
+    <a href="#map">MAP</a>
+    <a href="#store">STORE</a>
     <a href="#news">NEWS</a>
     <a href="#hof">HALL OF FAME</a>
     <a href="enlist.html">ENLIST</a>
@@ -269,6 +295,77 @@ footer a:hover{color:#00ff41;}
   </div>
 </section>
 
+<!-- COUNTDOWN -->
+<section class="section" id="countdown">
+  <div class="section-inner">
+    <div class="section-tag">// NEXT OPERATION</div>
+    <div class="section-title">MISSION COUNTDOWN</div>
+    <div class="section-sub">NEXT SCHEDULED B.O.L.D OPERATION — FIRST DAY OF SCHOOL</div>
+    <div class="countdown-wrap">
+      <div class="countdown-title">> OPERATION: SCHOOL YEAR LAUNCH</div>
+      <div class="countdown-boxes">
+        <div class="cd-box"><div class="cd-num" id="cd-d">00</div><div class="cd-label">DAYS</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-h">00</div><div class="cd-label">HOURS</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-m">00</div><div class="cd-label">MINUTES</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-s">00</div><div class="cd-label">SECONDS</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT MAP -->
+<section class="section" id="map">
+  <div class="section-inner">
+    <div class="section-tag">// WORLDWIDE NETWORK</div>
+    <div class="section-title">AGENT MAP</div>
+    <div class="section-sub">ACTIVE AGENTS WORLDWIDE — EVERY PIN IS A PROTECTOR</div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="agent-map"></div>
+    <p style="margin-top:12px;font-size:11px;color:#333;letter-spacing:2px;text-align:center;">📍 ENLIST TO ADD YOURSELF TO THE MAP</p>
+  </div>
+</section>
+
+<!-- STORE -->
+<section class="section" id="store">
+  <div class="section-inner">
+    <div class="section-tag">// B.O.L.D SUPPLY DROP</div>
+    <div class="section-title">AGENT STORE</div>
+    <div class="section-sub">OFFICIAL B.O.L.D GEAR — ORDER BY EMAIL · CASH ON DELIVERY</div>
+    <div class="store-grid">
+      <div class="store-card">
+        <div class="store-icon">🎖️</div>
+        <div class="store-name">RECRUIT BADGE</div>
+        <div class="store-desc">Official B.O.L.D Recruit badge. Printed, cut, and signed by Director Oliver Vo.</div>
+        <div class="store-price">$2</div>
+        <a class="store-btn" href="mailto:truongnvo@gmail.com?subject=B.O.L.D Store - Recruit Badge">ORDER →</a>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">🪪</div>
+        <div class="store-name">AGENT ID CARD</div>
+        <div class="store-desc">Official B.O.L.D ID card with your name, code name, rank, and school. Laminated.</div>
+        <div class="store-price">$3</div>
+        <a class="store-btn" href="mailto:truongnvo@gmail.com?subject=B.O.L.D Store - Agent ID Card">ORDER →</a>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">📖</div>
+        <div class="store-name">AGENT HANDBOOK</div>
+        <div class="store-desc">The official B.O.L.D Agent Handbook. Rules, ranks, missions, and the oath. Printed and stapled.</div>
+        <div class="store-price">$5</div>
+        <a class="store-btn" href="mailto:truongnvo@gmail.com?subject=B.O.L.D Store - Agent Handbook">ORDER →</a>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">📦</div>
+        <div class="store-name">FULL AGENT KIT</div>
+        <div class="store-desc">Everything — badge, ID card, handbook, and a personal welcome note from Director Oliver Vo.</div>
+        <div class="store-price">$8</div>
+        <a class="store-btn" href="mailto:truongnvo@gmail.com?subject=B.O.L.D Store - Full Agent Kit">ORDER →</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:11px;color:#333;letter-spacing:2px;">LADERA RANCH DELIVERY BY BIKE · EVERYWHERE ELSE BY MAIL · CASH OR VENMO</p>
+  </div>
+</section>
+
 <!-- NEWS FEED -->
 <section class="section" id="news">
   <div class="section-inner">
@@ -337,6 +434,38 @@ footer a:hover{color:#00ff41;}
 </footer>
 
 <script>
+// Countdown to Sept 2 2026 (first day of school)
+function updateCountdown(){
+  const target = new Date('2026-09-02T08:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if(diff <= 0){ document.getElementById('cd-d').textContent='00'; return; }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Agent Map
+const map = L.map('agent-map', { zoomControl: true }).setView([20, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+const agentIcon = L.divIcon({ className:'', html:'<div style="background:#00ff41;border:2px solid #000;border-radius:50%;width:14px;height:14px;box-shadow:0 0 8px rgba(0,255,65,0.8);"></div>', iconSize:[14,14], iconAnchor:[7,7] });
+// Director pin
+L.marker([33.5610,-117.6390],{icon:agentIcon}).addTo(map).bindPopup('<div style="font-family:monospace;background:#000;color:#00ff41;padding:8px;border:1px solid #00ff41;"><b>OLIVER VO</b><br>DIRECTOR · L5<br>Ladera Ranch, CA</div>');
+// Add agent pins from localStorage
+const storedAgents = JSON.parse(localStorage.getItem('bold-agents')||'[]');
+storedAgents.forEach(a => {
+  if(a.lat && a.lng){
+    L.marker([a.lat,a.lng],{icon:agentIcon}).addTo(map).bindPopup(`<div style="font-family:monospace;background:#000;color:#00ff41;padding:8px;border:1px solid #00ff41;"><b>${(a.codename||a.name).toUpperCase()}</b><br>${a.rank||'RECRUIT'}<br>${a.location||''}</div>`);
+  }
+});
+
 // Ticker
 const tickers = [
   '> SYSTEM ONLINE. AGENTS STANDING BY.',
