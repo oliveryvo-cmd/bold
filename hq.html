@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B.O.L.D HQ — Command Center</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#000;color:#00ff41;font-family:'Share Tech Mono',monospace;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px);pointer-events:none;z-index:999;}
+
+/* NAV */
+nav{padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #111;background:#000;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:10px;}
+.nav-logo{font-family:'Orbitron',monospace;font-size:20px;font-weight:900;letter-spacing:6px;color:#fff;text-decoration:none;}
+.nav-logo span{color:#00ff41;}
+.nav-links{display:flex;gap:20px;flex-wrap:wrap;}
+.nav-links a{color:#555;text-decoration:none;font-size:12px;letter-spacing:2px;transition:color 0.2s;}
+.nav-links a:hover{color:#00ff41;}
+.nav-status{font-size:11px;color:#00ff41;letter-spacing:2px;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* HERO */
+.hq-hero{text-align:center;padding:60px 20px 40px;border-bottom:1px solid #111;position:relative;overflow:hidden;}
+.hq-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0,255,65,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,0.03) 1px,transparent 1px);background-size:40px 40px;}
+.hq-title{font-family:'Orbitron',monospace;font-size:clamp(36px,7vw,80px);font-weight:900;letter-spacing:8px;color:#00ff41;text-shadow:0 0 40px rgba(0,255,65,0.3);position:relative;}
+.hq-sub{font-size:13px;letter-spacing:4px;color:#555;margin-top:12px;margin-bottom:30px;}
+.hq-ticker{font-size:12px;color:#00ff41;letter-spacing:2px;border:1px solid #111;padding:8px 20px;display:inline-block;}
+
+/* STATS BAR */
+.stats-bar{display:flex;justify-content:center;gap:0;border-bottom:1px solid #111;flex-wrap:wrap;}
+.stat-item{padding:24px 40px;text-align:center;border-right:1px solid #111;flex:1;min-width:140px;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Orbitron',monospace;font-size:40px;font-weight:900;color:#00ff41;}
+.stat-label{font-size:10px;letter-spacing:3px;color:#555;margin-top:6px;}
+
+/* SECTIONS */
+.section{padding:60px 20px;border-bottom:1px solid #111;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:11px;letter-spacing:4px;color:#00ff41;margin-bottom:12px;}
+.section-title{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:4px;margin-bottom:8px;color:#fff;}
+.section-sub{font-size:13px;color:#555;letter-spacing:2px;margin-bottom:40px;}
+
+/* LEADERBOARD */
+.leaderboard{display:grid;gap:8px;}
+.lb-row{display:flex;align-items:center;gap:16px;border:1px solid #111;padding:14px 20px;transition:border-color 0.2s;}
+.lb-row:hover{border-color:#00ff41;}
+.lb-rank{font-family:'Orbitron',monospace;font-size:20px;font-weight:900;width:40px;color:#00ff41;}
+.lb-rank.gold{color:#f59e0b;}
+.lb-rank.silver{color:#aaaaaa;}
+.lb-rank.bronze{color:#cd7f32;}
+.lb-name{font-family:'Orbitron',monospace;font-size:15px;flex:1;}
+.lb-code{font-size:12px;color:#555;flex:1;}
+.lb-missions{font-size:12px;color:#00ff41;letter-spacing:2px;}
+.lb-badge{font-size:11px;letter-spacing:2px;border:1px solid;padding:3px 10px;}
+.badge-recruit{color:#00ff41;border-color:#00ff41;}
+.badge-agent{color:#33bbff;border-color:#33bbff;}
+.badge-specialist{color:#ffcc00;border-color:#ffcc00;}
+.badge-commander{color:#ff6600;border-color:#ff6600;}
+.badge-director{color:#ff0055;border-color:#ff0055;}
+
+/* CASES */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.case-card{border:1px solid #1a1a1a;padding:20px;transition:border-color 0.2s;}
+.case-card:hover{border-color:#333;}
+.case-id{font-size:10px;color:#555;letter-spacing:3px;margin-bottom:8px;}
+.case-status{display:inline-block;font-size:10px;letter-spacing:2px;padding:3px 10px;border:1px solid #00ff41;color:#00ff41;margin-bottom:12px;}
+.case-status.closed{border-color:#333;color:#333;}
+.case-desc{font-size:13px;color:#444;line-height:1.6;margin-bottom:8px;}
+.case-loc{font-size:11px;color:#555;}
+
+/* NEWS */
+.news-feed{display:grid;gap:16px;}
+.news-item{border-left:3px solid #00ff41;padding:16px 20px;}
+.news-date{font-size:10px;color:#555;letter-spacing:3px;margin-bottom:6px;}
+.news-title{font-size:15px;color:#fff;margin-bottom:4px;font-family:'Orbitron',monospace;}
+.news-body{font-size:13px;color:#555;line-height:1.6;}
+
+/* MISSIONS */
+.missions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.mission-card{border:1px solid #111;padding:20px;cursor:pointer;transition:all 0.2s;position:relative;}
+.mission-card:hover{border-color:#00ff41;background:rgba(0,255,65,0.02);}
+.mission-tag{font-size:10px;letter-spacing:3px;color:#00ff41;margin-bottom:8px;}
+.mission-title{font-family:'Orbitron',monospace;font-size:14px;color:#fff;margin-bottom:8px;}
+.mission-desc{font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;}
+.mission-reward{font-size:11px;color:#ffcc00;letter-spacing:2px;}
+.mission-diff{position:absolute;top:16px;right:16px;font-size:10px;letter-spacing:2px;padding:2px 8px;border:1px solid;}
+.diff-easy{color:#00ff41;border-color:#00ff41;}
+.diff-medium{color:#ffcc00;border-color:#ffcc00;}
+.diff-hard{color:#ff6600;border-color:#ff6600;}
+
+/* HALL OF FAME */
+.hof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.hof-card{border:1px solid #111;padding:24px;text-align:center;transition:border-color 0.2s;}
+.hof-card:hover{border-color:#f59e0b;}
+.hof-icon{font-size:48px;margin-bottom:12px;}
+.hof-name{font-family:'Orbitron',monospace;font-size:14px;color:#f59e0b;margin-bottom:4px;}
+.hof-reason{font-size:12px;color:#555;line-height:1.5;}
+
+/* CTA */
+.cta-bar{padding:60px 20px;text-align:center;border-bottom:1px solid #111;}
+.cta-bar h2{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,36px);color:#fff;margin-bottom:16px;}
+.cta-bar p{color:#555;font-size:14px;margin-bottom:32px;}
+.btn{display:inline-block;border:1px solid #00ff41;color:#00ff41;font-family:'Orbitron',monospace;font-size:13px;letter-spacing:4px;padding:14px 32px;text-decoration:none;transition:all 0.2s;margin:8px;}
+.btn:hover{background:#00ff41;color:#000;}
+.btn-white{border-color:#fff;color:#fff;}
+.btn-white:hover{background:#fff;color:#000;}
+
+footer{padding:30px 20px;text-align:center;border-top:1px solid #111;}
+footer p{color:#222;font-size:11px;letter-spacing:2px;}
+footer a{color:#333;text-decoration:none;margin-left:16px;}
+footer a:hover{color:#00ff41;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">B.<span>O</span>.L.D</a>
+  <div class="nav-status">● HQ ONLINE</div>
+  <div class="nav-links">
+    <a href="#leaderboard">LEADERBOARD</a>
+    <a href="#cases">CASES</a>
+    <a href="#missions">MISSIONS</a>
+    <a href="#news">NEWS</a>
+    <a href="#hof">HALL OF FAME</a>
+    <a href="enlist.html">ENLIST</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hq-hero">
+  <div class="hq-title">B.O.L.D HQ</div>
+  <div class="hq-sub">BULLYING OPERATION LEADERSHIP DIVISION — COMMAND CENTER</div>
+  <div class="hq-ticker" id="ticker">> SYSTEM ONLINE. AGENTS STANDING BY.</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="s-agents">0</div><div class="stat-label">ACTIVE AGENTS</div></div>
+  <div class="stat-item"><div class="stat-num" id="s-cases">0</div><div class="stat-label">CASES OPENED</div></div>
+  <div class="stat-item"><div class="stat-num" id="s-missions">12</div><div class="stat-label">MISSIONS AVAILABLE</div></div>
+  <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">DIRECTOR</div></div>
+  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">KIDS PROTECTED</div></div>
+</div>
+
+<!-- LEADERBOARD -->
+<section class="section" id="leaderboard">
+  <div class="section-inner">
+    <div class="section-tag">// TOP AGENTS</div>
+    <div class="section-title">AGENT LEADERBOARD</div>
+    <div class="section-sub">RANKED BY MISSIONS COMPLETED · UPDATED IN REAL TIME</div>
+    <div class="leaderboard" id="lbList">
+      <div class="lb-row">
+        <div class="lb-rank badge-director" style="width:40px;font-family:'Orbitron',monospace;font-size:20px;font-weight:900;">#1</div>
+        <div class="lb-name">OLIVER VO</div>
+        <div class="lb-code">Director · Ladera Ranch, CA</div>
+        <div class="lb-missions">∞ MISSIONS</div>
+        <div class="lb-badge badge-director">DIRECTOR</div>
+      </div>
+      <div style="text-align:center;color:#222;font-size:13px;letter-spacing:3px;padding:40px;">> WAITING FOR AGENTS TO ENLIST. BE THE FIRST.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVE CASES -->
+<section class="section" id="cases">
+  <div class="section-inner">
+    <div class="section-tag">// ACTIVE OPERATIONS</div>
+    <div class="section-title">CASE TRACKER</div>
+    <div class="section-sub">LIVE CASES BEING WORKED ON BY B.O.L.D AGENTS</div>
+    <div class="cases-grid" id="casesList">
+      <div style="color:#222;font-size:13px;letter-spacing:3px;padding:40px;grid-column:1/-1;text-align:center;">> NO ACTIVE CASES. OPEN ONE AT <a href="index.html#case" style="color:#00ff41;">BASE</a>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BOARD -->
+<section class="section" id="missions">
+  <div class="section-inner">
+    <div class="section-tag">// MISSION BOARD</div>
+    <div class="section-title">AVAILABLE MISSIONS</div>
+    <div class="section-sub">CLAIM A MISSION. COMPLETE IT. RANK UP.</div>
+    <div class="missions-grid">
+      <div class="mission-card">
+        <div class="mission-diff diff-easy">EASY</div>
+        <div class="mission-tag">// MISSION 001</div>
+        <div class="mission-title">FIRST WATCH</div>
+        <div class="mission-desc">Spend one full school day watching for bullying. Write down everything you see — who, what, where, when.</div>
+        <div class="mission-reward">REWARD: +1 RANK POINT</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-easy">EASY</div>
+        <div class="mission-tag">// MISSION 002</div>
+        <div class="mission-title">RECRUIT ONE</div>
+        <div class="mission-desc">Get one friend to enlist in B.O.L.D. Show them the website. Hand them a flyer. Make them official.</div>
+        <div class="mission-reward">REWARD: +2 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-easy">EASY</div>
+        <div class="mission-tag">// MISSION 003</div>
+        <div class="mission-title">SIT WITH SOMEONE</div>
+        <div class="mission-desc">Find a kid sitting alone at lunch who looks lonely or sad. Go sit with them. Just be there.</div>
+        <div class="mission-reward">REWARD: +2 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-medium">MEDIUM</div>
+        <div class="mission-tag">// MISSION 004</div>
+        <div class="mission-title">REPORT A CASE</div>
+        <div class="mission-desc">Open an official B.O.L.D case about bullying you witnessed. Include full details — who, what, where, duration.</div>
+        <div class="mission-reward">REWARD: +3 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-medium">MEDIUM</div>
+        <div class="mission-tag">// MISSION 005</div>
+        <div class="mission-title">BUILD YOUR SQUAD</div>
+        <div class="mission-desc">Recruit 3 agents in your school. Brief them on the B.O.L.D rules. You are now a squad leader.</div>
+        <div class="mission-reward">REWARD: SPECIALIST ELIGIBILITY</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-medium">MEDIUM</div>
+        <div class="mission-tag">// MISSION 006</div>
+        <div class="mission-title">DEFEND SOMEONE</div>
+        <div class="mission-desc">Step in (safely, with words only) when you see someone being bullied. No fighting. Just speak up.</div>
+        <div class="mission-reward">REWARD: +5 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-medium">MEDIUM</div>
+        <div class="mission-tag">// MISSION 007</div>
+        <div class="mission-title">HANG A FLYER</div>
+        <div class="mission-desc">Print a B.O.L.D recruitment flyer and hang it somewhere at your school or neighborhood.</div>
+        <div class="mission-reward">REWARD: +2 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-hard">HARD</div>
+        <div class="mission-tag">// MISSION 008</div>
+        <div class="mission-title">STOP THE BULLY</div>
+        <div class="mission-desc">Successfully stop a bullying situation using words and strategy only. Report the outcome to Director Oliver Vo.</div>
+        <div class="mission-reward">REWARD: +10 RANK POINTS · AGENT RANK UP</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-hard">HARD</div>
+        <div class="mission-tag">// MISSION 009</div>
+        <div class="mission-title">SCHOOL TAKEOVER</div>
+        <div class="mission-desc">Get 10 agents enlisted from your school. You now run a full B.O.L.D unit. Report to Director for Commander review.</div>
+        <div class="mission-reward">REWARD: COMMANDER ELIGIBILITY</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-hard">HARD</div>
+        <div class="mission-tag">// MISSION 010</div>
+        <div class="mission-title">TELL YOUR STORY</div>
+        <div class="mission-desc">Write or record your personal bullying story and share it with Director Oliver Vo. Your story could help someone else.</div>
+        <div class="mission-reward">REWARD: +8 RANK POINTS · HALL OF FAME CANDIDATE</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-hard">HARD</div>
+        <div class="mission-tag">// MISSION 011</div>
+        <div class="mission-title">CYBER SHIELD</div>
+        <div class="mission-desc">Find and report cyberbullying happening online. Screenshot it. Report it to the platform AND to Director Oliver Vo.</div>
+        <div class="mission-reward">REWARD: +6 RANK POINTS</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-diff diff-hard">HARD</div>
+        <div class="mission-tag">// MISSION 012</div>
+        <div class="mission-title">SPREAD THE WORD</div>
+        <div class="mission-desc">Get B.O.L.D mentioned in your school newsletter, announcement, or by a teacher. Make it official at your school.</div>
+        <div class="mission-reward">REWARD: +10 RANK POINTS · SPECIALIST RANK UP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS FEED -->
+<section class="section" id="news">
+  <div class="section-inner">
+    <div class="section-tag">// HQ TRANSMISSIONS</div>
+    <div class="section-title">NEWS FEED</div>
+    <div class="section-sub">UPDATES FROM DIRECTOR OLIVER VO</div>
+    <div class="news-feed">
+      <div class="news-item">
+        <div class="news-date">JULY 7, 2026</div>
+        <div class="news-title">B.O.L.D HQ IS ONLINE</div>
+        <div class="news-body">The B.O.L.D command center is now live. Agents can now track missions, view the leaderboard, and monitor active cases. Enlist now and claim your first mission. No bully gets away. Not on our watch. — Director Oliver Vo</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">JULY 7, 2026</div>
+        <div class="news-title">MISSION BOARD LAUNCHED</div>
+        <div class="news-body">12 official missions are now available for all agents. Complete missions to earn rank points and unlock higher ranks. First agent to complete all 12 missions will be inducted into the Hall of Fame.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">JULY 7, 2026</div>
+        <div class="news-title">RECRUITING BEGINS</div>
+        <div class="news-body">B.O.L.D is actively recruiting agents worldwide. Share the enlistment link with every kid you know. The more agents we have, the more kids we protect. oliveryvo-cmd.github.io/bold/enlist.html</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALL OF FAME -->
+<section class="section" id="hof">
+  <div class="section-inner">
+    <div class="section-tag">// LEGENDS</div>
+    <div class="section-title">HALL OF FAME</div>
+    <div class="section-sub">AGENTS WHO CHANGED EVERYTHING</div>
+    <div class="hof-grid">
+      <div class="hof-card">
+        <div class="hof-icon">👑</div>
+        <div class="hof-name">OLIVER VO</div>
+        <div class="hof-reason">Founded B.O.L.D at age 10. Director for life. Started a movement that protects kids worldwide.</div>
+      </div>
+      <div class="hof-card" style="opacity:0.3;">
+        <div class="hof-icon">❓</div>
+        <div class="hof-name">YOUR NAME HERE</div>
+        <div class="hof-reason">Complete 5 missions and stop a bullying situation to become a Hall of Fame candidate.</div>
+      </div>
+      <div class="hof-card" style="opacity:0.3;">
+        <div class="hof-icon">❓</div>
+        <div class="hof-name">YOUR NAME HERE</div>
+        <div class="hof-reason">The next legend is out there. It could be you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bar">
+  <h2>READY TO JOIN THE FIGHT?</h2>
+  <p>Enlist now. Claim your first mission. Protect a kid who needs you.</p>
+  <a href="enlist.html" class="btn">ENLIST NOW →</a>
+  <a href="index.html#case" class="btn btn-white">OPEN A CASE →</a>
+</div>
+
+<footer>
+  <p>© 2026 B.O.L.D — BULLYING OPERATION LEADERSHIP DIVISION · FOUNDED BY OLIVER VO · AGE 10
+    <a href="index.html">BASE</a>
+    <a href="admin.html">ADMIN</a>
+  </p>
+</footer>
+
+<script>
+// Ticker
+const tickers = [
+  '> SYSTEM ONLINE. AGENTS STANDING BY.',
+  '> NO BULLY GETS AWAY. NOT ON OUR WATCH.',
+  '> NEW MISSIONS AVAILABLE. CLAIM YOURS.',
+  '> DIRECTOR OLIVER VO — LADERA RANCH, CA',
+  '> WORLDWIDE OPERATION. JOIN NOW.',
+];
+let ti = 0;
+setInterval(() => {
+  ti = (ti+1) % tickers.length;
+  document.getElementById('ticker').textContent = tickers[ti];
+}, 3000);
+
+// Load stats from localStorage
+const agents = JSON.parse(localStorage.getItem('bold-agents')||'[]');
+const cases = JSON.parse(localStorage.getItem('bold-cases')||'[]');
+document.getElementById('s-agents').textContent = agents.length;
+document.getElementById('s-cases').textContent = cases.length;
+
+// Leaderboard
+if(agents.length > 0){
+  const rankOrder = ['DIRECTOR','COMMANDER','SPECIALIST','AGENT','RECRUIT'];
+  const sorted = [...agents].sort((a,b) => rankOrder.indexOf(a.rank) - rankOrder.indexOf(b.rank));
+  const lb = document.getElementById('lbList');
+  lb.innerHTML = `<div class="lb-row">
+    <div class="lb-rank" style="color:#ff0055;width:40px;font-family:'Orbitron',monospace;font-size:20px;font-weight:900;">#1</div>
+    <div class="lb-name">OLIVER VO</div>
+    <div class="lb-code">Director · Ladera Ranch, CA</div>
+    <div class="lb-missions">∞ MISSIONS</div>
+    <div class="lb-badge badge-director">DIRECTOR</div>
+  </div>`;
+  sorted.forEach((a,i) => {
+    const rankClass = `badge-${(a.rank||'RECRUIT').toLowerCase()}`;
+    const medal = i===0?'#f59e0b':i===1?'#aaaaaa':i===2?'#cd7f32':'#00ff41';
+    lb.innerHTML += `<div class="lb-row">
+      <div class="lb-rank" style="color:${medal};width:40px;font-family:'Orbitron',monospace;font-size:20px;font-weight:900;">#${i+2}</div>
+      <div class="lb-name">${(a.codename||a.name).toUpperCase()}</div>
+      <div class="lb-code">${a.rank||'RECRUIT'} · ${a.location||'—'}</div>
+      <div class="lb-missions">${a.school||'—'}</div>
+      <div class="lb-badge ${rankClass}">${a.rank||'RECRUIT'}</div>
+    </div>`;
+  });
+}
+
+// Cases
+if(cases.length > 0){
+  const cl = document.getElementById('casesList');
+  cl.innerHTML = cases.map((c,i) => `
+    <div class="case-card">
+      <div class="case-id">CASE #${String(i+1).padStart(4,'0')} · ${c.date||'—'}</div>
+      <div class="case-status">ACTIVE</div>
+      <div class="case-desc">${c.description||'Details classified.'}</div>
+      <div class="case-loc">📍 ${c.location||'—'} · ${c.school||'—'}</div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>
